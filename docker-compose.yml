@@ -23,12 +23,19 @@ services:
       - ./:/app
 
   mysql:
-    image: mysql:5.73
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=verysecret
-      - MYSQL_DATABASE=yii2advanced
-      - MYSQL_USER=yii2advanced
-      - MYSQL_PASSWORD=secret
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: crm
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 123
+
+    ports:
+       - "8101:3306"
+    container_name: crm_db
 
   #pgsql:
   #  image: postgres:9.5
