@@ -31,7 +31,7 @@ use yii\widgets\Menu;
                         </li>
                     </ul>
                 </li>
-
+            <?php if (Yii::$app->user->can('update_setting')): ?>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-gear"></i>
@@ -41,12 +41,6 @@ use yii\widgets\Menu;
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/server" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Сервера</p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="/user" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -61,6 +55,7 @@ use yii\widgets\Menu;
                         </li>
                     </ul>
                 </li>
+                <?php endif; ?>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
