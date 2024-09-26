@@ -18,6 +18,10 @@ class m240925_194803_create_product_table extends Migration
             'price' => $this->integer()->notNull(),
         ]);
 
+        $this->insert('product', ['title' => 'Яблоки', 'price' => 150]);
+        $this->insert('product', ['title' => 'Груши', 'price' => 200]);
+        $this->insert('product', ['title' => 'Lamborghini', 'price' => 300000]);
+
     }
 
 

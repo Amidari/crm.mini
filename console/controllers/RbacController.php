@@ -19,8 +19,7 @@ class RbacController extends Controller
         $manager->description = 'Менеджер';
         $auth->add($manager);
 
-        // добавляем роль "admin" и даём роли разрешение "updatePost"
-        // а также все разрешения роли "author"
+
         $admin = $auth->createRole('admin');
         $admin->description = 'Администратор';
         $auth->add($admin);

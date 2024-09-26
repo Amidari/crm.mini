@@ -25,7 +25,7 @@ class LoginForm extends Model
         return [
             // email and password are both required
             [['email', 'password'], 'required'],
-//            [['email'], 'email'],
+            [['email'], 'email'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -69,7 +69,7 @@ class LoginForm extends Model
      *
      * @return User|null
      */
-    protected function getUser():User
+    protected function getUser()
     {
         if ($this->_user === null) {
             $this->_user = User::findByEmail($this->email);
