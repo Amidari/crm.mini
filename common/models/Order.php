@@ -20,6 +20,9 @@ class Order extends \yii\db\ActiveRecord
     const STATUS_REJECTED = 2;
     const STATUS_DEFECT = 3;
 
+    public $product_price;
+    public $product_title;
+
     /**
      * {@inheritdoc}
      */
@@ -42,19 +45,28 @@ class Order extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
+    public function getProduct(){
+        $product = Product::find()
+            ->select('product.title as title, product.price as price')
+            ->join('join', 'order_product', 'order_product.product_id = product.id')
+            ->join('join', 'order', 'order.id = order_product.order_id')
+            ->where(['order.id' => $this->id])
+            ->one();
+        return $product;
+    }
+
+    static function getStatus()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'client_name' => 'Client Name',
-            'client_phone' => 'Client Phone',
-            'status' => 'Status',
-            'created_at' => 'Created At',
+            self::STATUS_NEW => 'Новый заказ',
+            self::STATUS_ACCEPTED => 'Принята',
+            self::STATUS_REJECTED => 'Отказана',
+            self::STATUS_DEFECT => 'Брак',
         ];
+    }
+
+    public function getStatusTitle()
+    {
+        return self::getStatus()[$this->status];
     }
 }
