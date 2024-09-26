@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 <div aria-labelledby="headingOne">
 
     <?php $form = ActiveForm::begin([
-        'id' => 'student-filter-form',
+        'id' => 'user-filter-form',
         //'enableAjaxValidation' => true,
         'method' => 'get',
         'action' => '/user/',
@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
                                 {error}',])
                 ->dropDownList($role, [
                     'class' => "form-control select-source",
-                    'data-placeholder' => "Выбрать...",
+                    'prompt' => "Все",
                 ])
             ?>
         </div>

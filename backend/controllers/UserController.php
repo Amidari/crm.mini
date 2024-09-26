@@ -3,9 +3,8 @@
 namespace backend\controllers;
 
 use backend\models\SignupForm;
-use common\entities\ServerEntity;
+use backend\services\UserService;
 use common\entities\UserEntity;
-use common\models\server\ServersUsers;
 use backend\models\user\UserFilterMD;
 use backend\services\PermissionService;
 use backend\components\Controller;
@@ -50,7 +49,7 @@ class UserController extends Controller
         $oFilterModel->load(Yii::$app->request->get());
 
         //Подгружаем список пользователей
-        $aListUsers = PermissionService::getAllUsers();
+        $aListUsers = UserService::getAllUsers();
         $aListRole = PermissionService::getRoleList();
 
         return $this->render('index', [
@@ -71,7 +70,7 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        $sTitle = 'Пользователь: '. $model->username;
+        $sTitle = 'Пользователь: ' . $model->username;
 
         return $this->render('view', [
             'model' => $model,
@@ -92,7 +91,7 @@ class UserController extends Controller
         $aListRole = PermissionService::getRoleList();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())&&$model->signup()) {
+            if ($model->load($this->request->post()) && $model->signup()) {
                 return $this->redirect(['index']);
             }
         }
@@ -115,7 +114,7 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        $sTitle = 'Пользователь: '. $model->username;
+        $sTitle = 'Пользователь: ' . $model->username;
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             $model->editRole();
@@ -136,7 +135,6 @@ class UserController extends Controller
      * @param int $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
-
      */
     public function actionDelete($id)
     {

@@ -8,9 +8,6 @@ class MainSidebar extends Widget
 {
     public function run()
     {
-
-        $sidebar = WebMenu::getLeftMenu();
-
-        return $this->render('main-sidebar', compact('sidebar'));
+        return $this->render('main-sidebar');
     }
 }

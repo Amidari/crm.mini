@@ -56,7 +56,15 @@ use yii\widgets\Menu;
                     </ul>
                 </li>
                 <?php endif; ?>
+                <li class="nav-item">
+                    <a href="<?= Yii::$app->params['frontendUrl'] ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Выход</p>
+                    </a>
+                </li>
             </ul>
+
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

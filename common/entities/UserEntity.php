@@ -83,7 +83,7 @@ class UserEntity extends User
     {
         $auth = Yii::$app->authManager;
         $role = $auth->getRole($this->role);
-        
+
         $auth->revokeAll($this->id);
 
         try {

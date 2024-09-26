@@ -39,6 +39,10 @@ class UserFilterMD extends Model
             if ($this->name) {
                 $oQuery->andwhere(['like', 'username', $this->name]);
             }
+            if ($this->role) {
+                $oQuery->join('join', 'auth_assignment', 'auth_assignment.user_id = user.id');
+                $oQuery->andwhere(['auth_assignment.item_name' => $this->role]);
+            }
         }
         //Применять фильтр по статусу вне зависимости от наличия параметров get
         if ($this->status){

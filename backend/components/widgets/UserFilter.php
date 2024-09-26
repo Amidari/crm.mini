@@ -11,7 +11,6 @@ class UserFilter extends Widget
     public $role;
     public $action;
     public $status = 10;
-
     public function run()
     {
         return $this->render('user_filter', [
