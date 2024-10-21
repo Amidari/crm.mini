@@ -6,9 +6,13 @@
     <br>
 </p>
 
+Запуск проекта
+
+```
 - docker-compose up -d
 - composer install
 - php init
+```
 
 Настройки подключения к БД:
 'dsn' => 'mysql:host=YOU_IP:8101;dbname=crm', <br>
@@ -18,12 +22,14 @@
 
 Указать свой локальный IP
 
+```
 - php yii migrate
 - php yii migrate --migrationPath=@yii/rbac/migrations
 - php yii rbac/init
+```
 
 frontend часть: http://localhost:20080/  <br>
-backend часть:  http://localhost:20080/ <br>
+backend часть:  http://localhost:21080/ <br>
 
 login:  admin@example.com
 password: 123
